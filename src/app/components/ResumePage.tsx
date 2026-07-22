@@ -3,6 +3,7 @@ import {
   GraduationCap,
   Users,
   Wrench,
+  Code2,
 } from "lucide-react";
 
 const education = [
@@ -13,12 +14,12 @@ const education = [
     note: "QuestBridge Recipient · Minor: Earth and Environmental Sciences",
     courses: [
       "Algorithms",
-      "Data Structures",
-      "Discrete Structures",
       "Statistics",
       "Intro to C++",
+      "Discrete Structures",
+      "Data Structures",
       "Intro to Java",
-      "Calculus I–III",
+      "Linear Algebra",
     ],
   },
   {
@@ -36,16 +37,27 @@ const leadership = [
     org: "Vanderbilt University",
     period: "Mar 2025 – Present",
     bullets: [
-      "Mentor 15+ first-year students through academic and personal transitions to college life, serving as a consistent resource for advising and support.",
-      "Facilitate group discussions and events as part of a semester-long orientation program to build community among incoming students.",
+      "Mentored 15+ first-year students through their academic and personal transition to college, serving as a trusted resource throughout the semester.",
+      "Led and planned weekly discussions, community-building activities, and a semester-long orientation program designed to foster belonging and student success alongside a Vanderbilt faculty member.",
     ],
   },
   {
     role: "Sophomore Liaison",
     org: "FirstVU at Vanderbilt University",
-    period: "Apr 2026 – Feb 2026",
+    period: "Feb 2026 – Apr 2025",
     bullets: [
-      "Planned and hosted events serving the FirstVU first-generation student community, with a focus on peer mentorship and belonging.",
+      "Planned and promoted community-building events for first-generation students, helping create opportunities for connection.",
+      "Collaborated with executive board members to support FirstVU initiatives and strengthen the first-generation student community.",
+    ],
+  },
+  {
+    role: "Team Lead (Oct 2024–Apr 2025) · Lab Assistant (Sep 2025–Dec 2025)",
+    org: "Vanderbilt Students Volunteers for Science (VSVS)",
+    period: "Oct 2024 – Dec 2025",
+    bullets: [
+      "Led weekly hands-on science lessons for elementary and middle school students as part of a 3–4-member teaching team.",
+      "Coordinated lesson materials, prepared volunteer kits, and maintained cost spreadsheets to support weekly classroom visits.",
+      "Promoted STEM accessibility by creating engaging learning experiences for students in underserved Nashville-area schools.",
     ],
   },
   {
@@ -53,52 +65,42 @@ const leadership = [
     org: "HeadStart Fellowship",
     period: "Sep 2025 – Dec 2025",
     bullets: [
-      "Participated in bi-weekly sessions on pre-professional tech career preparation, including resume workshops and technical interview practice.",
-      "Networked with software engineers and professionals from leading tech firms to build industry insight and connections.",
+      "Engaged in bi-weekly online sessions focused on preparing for pre-professional tech careers, including resume workshops and technical interview practice.",
+      "Networked with industry professionals from leading tech firms and recent grads to gain insights into software engineering roles.",
+    ],
+  },
+];
+
+const projects = [
+  {
+    name: "Tiny Footprint",
+    status: "In Progress",
+    stack: "HTML, CSS, JavaScript",
+    period: "Oct 2025 – Present",
+    bullets: [
+      "Developing a sustainability-focused web application that allows users to track and categorize daily waste production, including recyclable, compostable, and landfill materials.",
+      "Strengthening front-end development skills through responsive design, user interface development, and data organization.",
     ],
   },
   {
-    role: "Lab Assistant",
-    org: "Vanderbilt Students Volunteers for Science (VSVS)",
-    period: "Sep 2025 – Dec 2025",
+    name: "Crawly Collection",
+    status: "In Progress",
+    stack: "HTML, CSS",
+    period: "May 2026 – Present",
     bullets: [
-      "Prepared 20+ volunteer kits and maintained cost analysis spreadsheets, ensuring all materials were accurate and deployment-ready for weekly school visits.",
-      "Streamlined inventory management processes, reducing preparation time for volunteer kit assembly.",
+      "Building an interactive educational website highlighting insects and their ecological importance through custom illustrations and engaging content, implementing a draggable interface for a more interactive and accessible learning experience.",
+      "Expanding knowledge of web development, user experience design, and creative approaches to science communication.",
     ],
   },
   {
-    role: "Team Lead",
-    org: "Vanderbilt Students Volunteers for Science (VSVS)",
-    period: "Oct 2024 – Apr 2025",
+    name: "Urban Heat Island Effect in Texas",
+    status: "Independent Research Project",
+    stack: "Microsoft Excel",
+    period: "Feb 2025 – May 2025",
     bullets: [
-      "Led a 3–4 member team delivering weekly hands-on science lessons to elementary and middle school students in under-resourced Nashville schools.",
-      "Developed collaborative facilitation skills while making STEM education accessible and engaging for young learners.",
-    ],
-  },
-  {
-    role: "President, Art Club",
-    org: "Eastwood Academy",
-    period: "Sep 2021 – Jun 2024",
-    bullets: [
-      "Directed the creation of the 2023 Eastwood Art Car, overseeing 40+ hours of collaborative work with a 4-member team.",
-      "Spearheaded fundraising initiatives that raised $200+ to support club programming and materials.",
-    ],
-  },
-  {
-    role: "Information Manager & Volunteer",
-    org: "Humanitarian Society – Eastwood Academy",
-    period: "Sep 2021 – Jun 2024",
-    bullets: [
-      "Earned the Presidential Volunteer Service Award with 200+ hours of documented community service.",
-      "Organized and mobilized peers for community service initiatives, coordinating logistics and volunteer outreach.",
-    ],
-  },
-  {
-    role: "Alumni Participant",
-    org: "Quantum Science Camp – Texas A&M University",
-    period: "Jul – Aug 2023",
-    bullets: [
-      "Completed an intensive curriculum in quantum science fundamentals and delivered a final research presentation to faculty and peers.",
+      "Collected and organized over 100 years of historical temperature data across Texas counties to investigate the Urban Heat Island Effect, building a structured database comparing large counties, smaller counties adjacent to urban areas, and rural counties.",
+      "Analyzed long-term temperature trends and created graphs to visualize differences in warming patterns and the influence of urbanization.",
+      "Designed a research poster summarizing the project's findings and presented the research at a symposium-style showcase.",
     ],
   },
 ];
@@ -106,32 +108,27 @@ const leadership = [
 const skills = [
   {
     category: "Languages",
-    items: ["Java", "Python", "C++", "HTML", "CSS"],
+    items: ["English (Native)", "Spanish (Native)"],
   },
   {
-    category: "Tools & Software",
+    category: "Programming & Software",
     items: [
-      "Git & GitHub",
+      "Java",
+      "Python",
+      "C++",
+      "HTML/CSS",
       "Microsoft Office",
-      "Figma",
-      "VS Code",
+      "Git/GitHub",
+      "AutoCAD",
+      "Canva",
     ],
   },
   {
-    category: "Environmental Focus",
+    category: "Activities",
     items: [
-      "Earth & Environmental Sciences",
-      "Sustainability",
-      "STEM Outreach",
-    ],
-  },
-  {
-    category: "Other",
-    items: [
-      "Spanish (Native)",
       "Tutoring & Mentorship",
-      "Girls Who Code Alum",
       "Vanderbilt Ballet Folklórico",
+      "Girls Who Code Summer Alum",
     ],
   },
 ];
@@ -177,8 +174,8 @@ export function ResumePage() {
             >
               {[
                 {
-                  label: "adamaris.rodriguez@vanderbilt.edu",
-                  href: "mailto:adamaris.rodriguez@vanderbilt.edu",
+                  label: "adamarisrodriguez465@gmail.com",
+                  href: "mailto:adamarisrodriguez465@gmail.com",
                 },
                 {
                   label: "linkedin.com/in/adamaris-rodriguez",
@@ -467,6 +464,104 @@ export function ResumePage() {
                 ))}
               </div>
             </section>
+
+            {/* Projects */}
+            <section>
+              <div className="flex items-center gap-2 mb-6">
+                <Code2
+                  size={16}
+                  style={{ color: "var(--accent)" }}
+                />
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "1.4rem",
+                    color: "var(--foreground)",
+                  }}
+                >
+                  Projects
+                </h2>
+              </div>
+              <div className="space-y-7">
+                {projects.map((project) => (
+                  <div
+                    key={project.name}
+                    style={{
+                      paddingLeft: "1.25rem",
+                      borderLeft: "2px solid var(--secondary)",
+                    }}
+                  >
+                    <div className="flex items-start justify-between gap-4 flex-wrap">
+                      <div>
+                        <h3
+                          style={{
+                            fontFamily: "'Playfair Display', serif",
+                            fontSize: "1.02rem",
+                            color: "var(--foreground)",
+                            marginBottom: "0.1rem",
+                          }}
+                        >
+                          {project.name}
+                        </h3>
+                        <p
+                          style={{
+                            fontSize: "0.85rem",
+                            color: "var(--accent)",
+                            marginBottom: "0.6rem",
+                          }}
+                        >
+                          {project.status} · {project.stack}
+                        </p>
+                      </div>
+                      <span
+                        style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: "0.7rem",
+                          color: "var(--muted-foreground)",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {project.period}
+                      </span>
+                    </div>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: 0,
+                      }}
+                    >
+                      {project.bullets.map((b, i) => (
+                        <li
+                          key={i}
+                          style={{
+                            fontSize: "0.88rem",
+                            lineHeight: 1.7,
+                            color: "var(--muted-foreground)",
+                            paddingLeft: "1rem",
+                            position: "relative",
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          <span
+                            style={{
+                              position: "absolute",
+                              left: 0,
+                              top: "0.62em",
+                              width: "5px",
+                              height: "5px",
+                              borderRadius: "50%",
+                              background: "var(--accent)",
+                            }}
+                          />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
           </div>
 
           {/* Sidebar — Skills */}
@@ -541,9 +636,10 @@ export function ResumePage() {
                 RECOGNITION
               </p>
               {[
-                "Presidential Volunteer Service Award",
+                "Presidential Volunteer Service Award '24",
                 "QuestBridge Scholar",
-                "Girls Who Code Alum",
+                "Houston Art Car '24",
+                "Girls Who Code Summer Alum",
               ].map((award) => (
                 <p
                   key={award}

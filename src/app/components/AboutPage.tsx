@@ -13,37 +13,37 @@ const hobbies = [
     icon: Palette,
     title: "Drawing & Illustration",
     description:
-      "Sketchbooks filled with botanical studies, landscapes, and imaginary creatures. I believe every blank page is an invitation.",
+      "Love to sketch, paint and design. I've been practicing this skill since 2012.",
   },
   {
     icon: Sprout,
-    title: "Rewilding & Ecology",
+    title: "Movies",
     description:
-      "Fascinated by how ecosystems recover and thrive. I follow rewilding projects around the world and advocate for native planting.",
+      "I love watching all types of films, my letterbox is adamax_bones. I enjoy all genres, especially horror and sci-fi.",
   },
   {
     icon: Mountain,
-    title: "Hiking & Trail Time",
+    title: "Hiking",
     description:
-      "Getting out into green spaces clears my head. Mountains, forests, coastal paths — the wilder the better.",
+      "Getting out into green spaces clears my head. Mountains, parks, and trails.",
   },
   {
     icon: BookOpen,
-    title: "Nature Writing",
+    title: "Reading",
     description:
-      "Robin Wall Kimmerer, Robert Macfarlane, Annie Dillard. Words that make you stop and actually look at the world.",
+      "My love for reading grew recently as I find myself reading fiction novels. Currently reading: Earthlings",
   },
   {
     icon: Wind,
-    title: "Climate Advocacy",
+    title: "-",
     description:
-      "From composting to community organising — small and large acts toward a liveable future for every species on this planet.",
+      "-",
   },
   {
     icon: Leaf,
-    title: "Foraging & Plant ID",
+    title: "-",
     description:
-      "Learning to read the landscape through its plants. Still alive, so I think I'm doing alright.",
+      "-",
   },
 ];
 
