@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { Navigation } from "./components/Navigation";
 import { AboutPage } from "./components/AboutPage";
 import { ProjectsPage } from "./components/ProjectsPage";
@@ -13,18 +12,36 @@ import { EasterEggs } from "./components/EasterEggs";
 
 type Page = "about" | "projects" | "resume" | "contact";
 
+const SECTION_ORDER: Page[] = ["about", "projects", "resume", "contact"];
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("about");
   const [isDrawing, setIsDrawing] = useState(false);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "about":    return <AboutPage />;
-      case "projects": return <ProjectsPage />;
-      case "resume":   return <ResumePage />;
-      case "contact":  return <ContactPage />;
-    }
+  const handleNavigate = (page: Page) => {
+    document.getElementById(page)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Scroll-spy: highlight whichever section's tab matches what's in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCurrentPage(entry.target.id as Page);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+
+    SECTION_ORDER.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -40,20 +57,21 @@ export default function App() {
       {/* Scroll-reactive vine on the left edge */}
       <ScrollVine />
 
-      <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
+      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
 
       <main style={{ pointerEvents: isDrawing ? "none" : "auto", position: "relative", zIndex: 3 }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {renderPage()}
-          </motion.div>
-        </AnimatePresence>
+        <section id="about" style={{ scrollMarginTop: "88px" }}>
+          <AboutPage />
+        </section>
+        <section id="projects" style={{ scrollMarginTop: "88px" }}>
+          <ProjectsPage />
+        </section>
+        <section id="resume" style={{ scrollMarginTop: "88px" }}>
+          <ResumePage />
+        </section>
+        <section id="contact" style={{ scrollMarginTop: "88px" }}>
+          <ContactPage />
+        </section>
         <Footer />
       </main>
 

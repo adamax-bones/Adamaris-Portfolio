@@ -13,7 +13,7 @@ const hobbies = [
     icon: Palette,
     title: "Drawing & Illustration",
     description:
-      "Love to sketch, paint and design. I've been practicing this skill since 2012.",
+      "Love to sketch, paint and design. I've been practicing this skill since 2012. My favorite artist is currently Yoshitomo Nara.",
   },
   {
     icon: Sprout,
@@ -25,7 +25,7 @@ const hobbies = [
     icon: Mountain,
     title: "Hiking",
     description:
-      "Getting out into green spaces clears my head. Mountains, parks, and trails.",
+      "Getting out into green spaces clears my head. Mountains, parks, and trails are my favorite places to explore. I love to take photos of nature with my fujifilm digital camera.",
   },
   {
     icon: BookOpen,
