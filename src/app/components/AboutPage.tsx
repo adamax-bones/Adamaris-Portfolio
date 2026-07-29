@@ -18,7 +18,7 @@ const hobbies = [
     icon: Sprout,
     title: "Volunteering",
     description:
-      "I've always been dedicated to serve back my community in any shape or form. I volunteer at local community gardens and help with environmental cleanups.",
+      "I've always been dedicated to serve back my community in any shape or form. I especially love to volunteer at local parks and help with environmental cleanups.",
   },
   {
     icon: Mountain,
@@ -30,7 +30,7 @@ const hobbies = [
     icon: BookOpen,
     title: "Reading",
     description:
-      "Recently got into reading novels and anything science related. Current reading: Earthlings.",
+      "Recently got into reading novels and anything science related. Currently reading: Earthlings.",
   },
   {
     icon: Wind,
@@ -40,9 +40,9 @@ const hobbies = [
   },
   {
     icon: Leaf,
-    title: "-",
+    title: "Mexican Folklorico Dancing",
     description:
-      "-",
+      "I started dancing folklorico since I was 10 years old. I stopped for a while and recently got back into it in college! I love dancing and performing in front of an audience.",
   },
 ];
 

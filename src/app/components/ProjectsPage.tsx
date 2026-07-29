@@ -54,7 +54,7 @@ const projects: Project[] = [
     id: 3,
     title: "Zero-Waste Vida",
     description:
-      "A website that shows how to live a more sustainable life as I was thought in my hispanic household. Combining this idea with Tiny Footprint.",
+      "A website that shows how to live a more sustainable life as I was taught in my hispanic household. Combining this idea with Tiny Footprint.",
     tags: ["climate", "print", "education", "design"],
     status: "idea",
     icon: Sprout,
