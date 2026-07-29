@@ -10,39 +10,39 @@ import {
 const hobbies = [
   {
     icon: Palette,
-    title: "Drawing & Illustration",
+    title: "Drawing & Painting",
     description:
-      "Sketchbooks filled with botanical studies, landscapes, and imaginary creatures. I believe every blank page is an invitation.",
+      "Sketchbooks and digital art are my favorite ways to express myself. I always have a sketchbook on me. I especially love drawing portraits and animals. Favorite Artist: Yoshitomo Nara.",
   },
   {
     icon: Sprout,
-    title: "Rewilding & Ecology",
+    title: "Volunteering",
     description:
-      "Fascinated by how ecosystems recover and thrive. I follow rewilding projects around the world and advocate for native planting.",
+      "I've always been dedicated to serve back my community in any shape or form. I volunteer at local community gardens and help with environmental cleanups.",
   },
   {
     icon: Mountain,
-    title: "Hiking & Trail Time",
+    title: "Hiking",
     description:
-      "Getting out into green spaces clears my head. Mountains, forests, coastal paths — the wilder the better.",
+      "Love walking in the woods and taking pictures of all the animals and plants I see. Also enjoy taking walks with my dog.",
   },
   {
     icon: BookOpen,
-    title: "Nature Writing",
+    title: "Reading",
     description:
-      "Robin Wall Kimmerer, Robert Macfarlane, Annie Dillard. Words that make you stop and actually look at the world.",
+      "Recently got into reading novels and anything science related. Current reading: Earthlings.",
   },
   {
     icon: Wind,
-    title: "Climate Advocacy",
+    title: "Movies & Shows",
     description:
-      "From composting to community organising — small and large acts toward a liveable future for every species on this planet.",
+      "I love watching movies and analyzing them. I enjoy watching anything from animation to horror.",
   },
   {
     icon: Leaf,
-    title: "Foraging & Plant ID",
+    title: "-",
     description:
-      "Learning to read the landscape through its plants. Still alive, so I think I'm doing alright.",
+      "-",
   },
 ];
 
@@ -99,10 +99,10 @@ export function AboutPage() {
               marginTop: "1rem",
             }}
           >
-            This portfolio is also a playground. Grab the
+            This portfolio is meant to be fun. Grab the
             drawing tool in the bottom right and leave your mark
-            I love seeing what others add. There are also six
-            little bugs wandering around the site — try dragging
+            I love seeing what people add. There are also six
+            little bugs wandering around the site. Try dragging
             one into the jar in the corner.
           </p>
         </div>

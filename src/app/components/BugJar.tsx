@@ -25,8 +25,8 @@ interface BugState {
   duration: number;
 }
 
-const JAR_W = 92;
-const JAR_H = 116;
+const JAR_W = 128;
+const JAR_H = 162;
 
 function rand(a: number, b: number) {
   return a + Math.random() * (b - a);
@@ -74,12 +74,12 @@ export function BugJar() {
       prev.map((b) => {
         if (b.id !== id) return b;
         const dist = Math.hypot(targetX - b.x, targetY - b.y);
-        const duration = Math.max(900, Math.min(3200, dist * 6));
+        const duration = Math.max(2200, Math.min(6500, dist * 13));
 
         clearTimeout(timers.current[id]);
         timers.current[id] = setTimeout(() => {
           if (statusRef.current[id] !== "wandering") return;
-          const pause = goesOffscreen ? 1000 + rand(0, 400) : rand(500, 1800);
+          const pause = goesOffscreen ? 1000 + rand(0, 400) : rand(1200, 3200);
           timers.current[id] = setTimeout(() => {
             if (statusRef.current[id] === "wandering") scheduleMove(id);
           }, pause);
@@ -196,8 +196,8 @@ export function BugJar() {
         ref={jarRef}
         style={{
           position: "fixed",
-          bottom: "24px",
-          right: "24px",
+          top: "150px",
+          right: "8%",
           width: JAR_W,
           height: JAR_H,
           pointerEvents: "auto",
@@ -244,17 +244,17 @@ export function BugJar() {
         <p
           style={{
             position: "absolute",
-            bottom: "-20px",
+            bottom: "-22px",
             left: 0,
             right: 0,
             textAlign: "center",
             fontFamily: "'DM Mono', monospace",
-            fontSize: "0.62rem",
+            fontSize: "0.65rem",
             color: "var(--muted-foreground)",
             letterSpacing: "0.05em",
           }}
         >
-          {caughtIds.length}/{BUG_DEFS.length} caught
+          Place bugs in the jar
         </p>
       </div>
     </div>
