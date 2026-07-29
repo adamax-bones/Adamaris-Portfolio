@@ -1,4 +1,4 @@
-import { Leaf } from "lucide-react";
+import { Leaf, Sun, Moon } from "lucide-react";
 import { motion } from "motion/react";
 
 type Page = "about" | "projects" | "resume" | "contact";
@@ -6,6 +6,8 @@ type Page = "about" | "projects" | "resume" | "contact";
 interface NavigationProps {
   currentPage: Page;
   onNavigate: (page: Page) => void;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
 }
 
 const links: { id: Page; label: string }[] = [
@@ -15,14 +17,14 @@ const links: { id: Page; label: string }[] = [
   { id: "contact", label: "Contact" },
 ];
 
-export function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export function Navigation({ currentPage, onNavigate, theme, onToggleTheme }: NavigationProps) {
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 py-4"
       style={{
-        background: "rgba(245, 240, 232, 0.92)",
+        background: "var(--card)",
         backdropFilter: "blur(8px)",
-        borderBottom: "1px solid rgba(44, 32, 21, 0.12)",
+        borderBottom: "1px solid var(--border)",
         fontFamily: "'Nunito', sans-serif",
       }}
     >
@@ -51,7 +53,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         </span>
       </motion.button>
 
-      <ul className="flex items-center gap-8">
+      <div className="flex items-center gap-8">
+        <ul className="flex items-center gap-8">
         {links.map((link) => (
           <li key={link.id} className="relative">
             <motion.button
@@ -90,6 +93,28 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </li>
         ))}
       </ul>
+
+        <motion.button
+          onClick={onToggleTheme}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          aria-label="Toggle dark mode"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "34px",
+            height: "34px",
+            borderRadius: "50%",
+            border: "1px solid var(--border)",
+            background: "var(--secondary)",
+            color: "var(--foreground)",
+            cursor: "pointer",
+          }}
+        >
+          {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+        </motion.button>
+      </div>
     </nav>
   );
 }

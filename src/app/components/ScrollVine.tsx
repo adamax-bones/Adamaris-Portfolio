@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useScroll, useSpring, useMotionValueEvent } from "motion/react";
 
 // Procedural vine path — replace svgPath with your hand-drawn SVG path data when ready
 const VINE_PATH = `
@@ -43,23 +44,21 @@ export function ScrollVine() {
   const [progress, setProgress] = useState(0);
   const [totalLength, setTotalLength] = useState(0);
 
-  useEffect(() => {
-    const path = pathRef.current;
-    if (!path) return;
-    const len = path.getTotalLength();
-    setTotalLength(len);
+  const { scrollYProgress } = useScroll();
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 26,
+    mass: 0.6,
+  });
 
-    const onScroll = () => {
-      const doc = document.documentElement;
-      const scrolled = doc.scrollTop;
-      const max = doc.scrollHeight - window.innerHeight;
-      setProgress(max <= 0 ? 1 : Math.min(scrolled / max, 1));
-    };
+  useMotionValueEvent(smoothProgress, "change", (v) => setProgress(v));
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useState(() => {
+    requestAnimationFrame(() => {
+      const path = pathRef.current;
+      if (path) setTotalLength(path.getTotalLength());
+    });
+  });
 
   const drawnLength = totalLength * progress;
 

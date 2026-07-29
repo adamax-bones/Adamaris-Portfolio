@@ -6,44 +6,43 @@ import {
   Wind,
   Mountain,
 } from "lucide-react";
-import { BugJar } from "./BugJar";
 
 const hobbies = [
   {
     icon: Palette,
     title: "Drawing & Illustration",
     description:
-      "Love to sketch, paint and design. I've been practicing this skill since 2012. My favorite artist is currently Yoshitomo Nara.",
+      "Sketchbooks filled with botanical studies, landscapes, and imaginary creatures. I believe every blank page is an invitation.",
   },
   {
     icon: Sprout,
-    title: "Movies",
+    title: "Rewilding & Ecology",
     description:
-      "I love watching all types of films, my letterbox is adamax_bones. I enjoy all genres, especially horror and sci-fi.",
+      "Fascinated by how ecosystems recover and thrive. I follow rewilding projects around the world and advocate for native planting.",
   },
   {
     icon: Mountain,
-    title: "Hiking",
+    title: "Hiking & Trail Time",
     description:
-      "Getting out into green spaces clears my head. Mountains, parks, and trails are my favorite places to explore. I love to take photos of nature with my fujifilm digital camera.",
+      "Getting out into green spaces clears my head. Mountains, forests, coastal paths — the wilder the better.",
   },
   {
     icon: BookOpen,
-    title: "Reading",
+    title: "Nature Writing",
     description:
-      "My love for reading grew recently as I find myself reading fiction novels. Currently reading: Earthlings",
+      "Robin Wall Kimmerer, Robert Macfarlane, Annie Dillard. Words that make you stop and actually look at the world.",
   },
   {
     icon: Wind,
-    title: "-",
+    title: "Climate Advocacy",
     description:
-      "-",
+      "From composting to community organising — small and large acts toward a liveable future for every species on this planet.",
   },
   {
     icon: Leaf,
-    title: "-",
+    title: "Foraging & Plant ID",
     description:
-      "-",
+      "Learning to read the landscape through its plants. Still alive, so I think I'm doing alright.",
   },
 ];
 
@@ -102,13 +101,10 @@ export function AboutPage() {
           >
             This portfolio is also a playground. Grab the
             drawing tool in the bottom right and leave your mark
-            I love seeing what others add.
+            I love seeing what others add. There are also six
+            little bugs wandering around the site — try dragging
+            one into the jar in the corner.
           </p>
-        </div>
-
-        {/* Bug jar */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <BugJar />
         </div>
       </section>
 

@@ -6,9 +6,9 @@ import { ResumePage } from "./components/ResumePage";
 import { ContactPage } from "./components/ContactPage";
 import { DrawingCanvas } from "./components/DrawingCanvas";
 import { Footer } from "./components/Footer";
-import { GridBackground } from "./components/GridBackground";
 import { ScrollVine } from "./components/ScrollVine";
 import { EasterEggs } from "./components/EasterEggs";
+import { BugJar } from "./components/BugJar";
 
 type Page = "about" | "projects" | "resume" | "contact";
 
@@ -17,6 +17,18 @@ const SECTION_ORDER: Page[] = ["about", "projects", "resume", "contact"];
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("about");
   const [isDrawing, setIsDrawing] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">(
+    () => (localStorage.getItem("theme") as "light" | "dark") || "light"
+  );
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((t) => (t === "light" ? "dark" : "light"));
+  };
 
   const handleNavigate = (page: Page) => {
     document.getElementById(page)?.scrollIntoView({ behavior: "smooth" });
@@ -52,12 +64,15 @@ export default function App() {
         position: "relative",
       }}
     >
-      <GridBackground />
-
       {/* Scroll-reactive vine on the left edge */}
       <ScrollVine />
 
-      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+      <Navigation
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <main style={{ pointerEvents: isDrawing ? "none" : "auto", position: "relative", zIndex: 3 }}>
         <section id="about" style={{ scrollMarginTop: "88px" }}>
@@ -83,6 +98,9 @@ export default function App() {
 
       {/* Easter eggs */}
       <EasterEggs />
+
+      {/* Roaming bugs — sitewide, draggable, catch them in the jar */}
+      <BugJar />
     </div>
   );
 }

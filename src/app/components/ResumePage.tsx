@@ -96,7 +96,7 @@ const projects = [
     name: "Urban Heat Island Effect in Texas",
     status: "Independent Research Project",
     stack: "Microsoft Excel",
-    period: "Feb 2025 – May 2025",
+    period: "Apr 2025 – Present",
     bullets: [
       "Collected and organized over 100 years of historical temperature data across Texas counties to investigate the Urban Heat Island Effect, building a structured database comparing large counties, smaller counties adjacent to urban areas, and rural counties.",
       "Analyzed long-term temperature trends and created graphs to visualize differences in warming patterns and the influence of urbanization.",

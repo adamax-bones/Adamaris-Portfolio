@@ -216,7 +216,7 @@ export function ContactPage() {
                       color: "var(--muted-foreground)",
                     }}
                   >
-                    LinkedIn
+                    Twitter / X
                   </p>
                   <p
                     style={{
@@ -267,7 +267,8 @@ export function ContactPage() {
                   color: "var(--primary)",
                 }}
               >
-                Open to collaborate.
+                Open to freelance illustration & collaborative
+                projects
               </span>
             </div>
           </div>
