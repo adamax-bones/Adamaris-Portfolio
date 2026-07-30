@@ -34,7 +34,7 @@ const projects: Project[] = [
       "education",
       "HTML/CSS",
     ],
-    status: "in progress",
+    status: "completed",
     icon: Map,
     image: "",
     imageAlt: "image of app",

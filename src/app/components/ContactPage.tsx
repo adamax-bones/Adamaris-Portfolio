@@ -356,19 +356,19 @@ export function ContactPage() {
                     key: "name",
                     label: "Your name",
                     type: "text",
-                    placeholder: "Jane Smith",
+                    placeholder: "First Name Last Name",
                   },
                   {
                     key: "email",
                     label: "Email address",
                     type: "email",
-                    placeholder: "jane@example.com",
+                    placeholder: "first_and_last@example.com",
                   },
                   {
                     key: "subject",
                     label: "Subject",
                     type: "text",
-                    placeholder: "Illustration commission",
+                    placeholder: "Hi! Let's collaborate.",
                   },
                 ].map((field) => (
                   <div key={field.key}>
