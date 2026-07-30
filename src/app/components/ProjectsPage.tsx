@@ -18,6 +18,7 @@ interface Project {
   icon: typeof Lightbulb;
   image: string;
   imageAlt: string;
+  video?: string;
 }
 
 const projects: Project[] = [
@@ -37,6 +38,7 @@ const projects: Project[] = [
     icon: Map,
     image: "",
     imageAlt: "image of app",
+    video: "/videos/tiny-footprint-demo.mp4",
   },
   {
     id: 2,
@@ -54,7 +56,7 @@ const projects: Project[] = [
     id: 3,
     title: "Zero-Waste Vida",
     description:
-      "A website that shows how to live a more sustainable life as I was taught in my hispanic household. Combining this idea with Tiny Footprint.",
+      "A website that shows how to live a more sustainable life as I was thought in my hispanic household. Combining this idea with Tiny Footprint.",
     tags: ["climate", "print", "education", "design"],
     status: "idea",
     icon: Sprout,
@@ -219,16 +221,32 @@ export function ProjectsPage() {
                     background: "var(--muted)",
                   }}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  )}
                 </div>
                 <div style={{ padding: "1.5rem" }}>
                   <div className="flex items-start justify-between gap-3 mb-3">

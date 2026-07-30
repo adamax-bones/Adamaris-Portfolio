@@ -60,6 +60,7 @@
   --destructive-foreground: #141f0d;
   --border: rgba(232, 223, 200, 0.15);
   --input: rgba(232, 223, 200, 0.08);
+  --input-background: #24331a;
   --ring: #9bc27c;
   --font-weight-medium: 500;
   --font-weight-normal: 400;

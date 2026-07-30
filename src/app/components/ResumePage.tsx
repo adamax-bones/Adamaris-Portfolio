@@ -73,16 +73,6 @@ const leadership = [
 
 const projects = [
   {
-    name: "Tiny Footprint",
-    status: "In Progress",
-    stack: "HTML, CSS, JavaScript",
-    period: "Oct 2025 – Present",
-    bullets: [
-      "Developing a sustainability-focused web application that allows users to track and categorize daily waste production, including recyclable, compostable, and landfill materials.",
-      "Strengthening front-end development skills through responsive design, user interface development, and data organization.",
-    ],
-  },
-  {
     name: "Crawly Collection",
     status: "In Progress",
     stack: "HTML, CSS",
@@ -90,6 +80,16 @@ const projects = [
     bullets: [
       "Building an interactive educational website highlighting insects and their ecological importance through custom illustrations and engaging content, implementing a draggable interface for a more interactive and accessible learning experience.",
       "Expanding knowledge of web development, user experience design, and creative approaches to science communication.",
+    ],
+  },
+  {
+    name: "Tiny Footprint",
+    status: "Done",
+    stack: "HTML, CSS, JavaScript",
+    period: "Oct 2025 – Feb 2026",
+    bullets: [
+      "Developing a sustainability-focused desktop application that allows users to track and categorize daily waste production, including recyclable, compostable, and landfill materials.",
+      "Strengthening front-end development skills through responsive design, user interface development, and data organization.",
     ],
   },
   {

@@ -5,6 +5,7 @@ import ladybug from "../../imports/3.png";
 import dragonfly from "../../imports/4.png";
 import butterfly from "../../imports/5.png";
 import bee from "../../imports/6.png";
+import terrariumJar from "../../assets/terrarium-jar.png";
 
 const BUG_DEFS = [
   { id: "pillbug", src: pillbug, w: 56, h: 42 },
@@ -25,8 +26,15 @@ interface BugState {
   duration: number;
 }
 
-const JAR_W = 128;
-const JAR_H = 162;
+// Big jar (shown at the top of the page, next to the hero heading)
+const BIG_JAR_W = 300;
+const BIG_JAR_H = 388;
+
+// Small widget (shown once you've scrolled past the hero)
+const SMALL_JAR_W = 70;
+const SMALL_JAR_H = 90;
+
+const SCROLL_THRESHOLD = 420;
 
 function rand(a: number, b: number) {
   return a + Math.random() * (b - a);
@@ -37,6 +45,8 @@ export function BugJar() {
   const timers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
   const statusRef = useRef<Record<string, BugStatus>>({});
   const dragInfo = useRef<{ id: string; offsetX: number; offsetY: number } | null>(null);
+
+  const [atTop, setAtTop] = useState(true);
 
   const [bugs, setBugs] = useState<BugState[]>(() =>
     BUG_DEFS.map((def) => ({
@@ -49,6 +59,13 @@ export function BugJar() {
   );
 
   const [caughtIds, setCaughtIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    const onScroll = () => setAtTop(window.scrollY < SCROLL_THRESHOLD);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scheduleMove = useCallback((id: string) => {
     const def = BUG_DEFS.find((b) => b.id === id)!;
@@ -191,43 +208,112 @@ export function BugJar() {
         );
       })}
 
-      {/* Jar — the drop target, initially empty */}
-      <div
-        ref={jarRef}
-        style={{
-          position: "fixed",
-          top: "150px",
-          right: "8%",
-          width: JAR_W,
-          height: JAR_H,
-          pointerEvents: "auto",
-        }}
-      >
-        <svg
-          viewBox={`0 0 ${JAR_W} ${JAR_H}`}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-        >
-          <rect x={JAR_W * 0.28} y="4" width={JAR_W * 0.44} height="8" rx="3" fill="#5a7a35" />
-          <rect x={JAR_W * 0.22} y="10" width={JAR_W * 0.56} height="14" rx="4" fill="#8aab6c" />
-          <path
-            d={`M ${JAR_W * 0.24} 24 Q ${JAR_W * 0.08} 32 ${JAR_W * 0.07} 60 L ${JAR_W * 0.07} ${JAR_H - 12} Q ${JAR_W * 0.07} ${JAR_H} ${JAR_W * 0.5} ${JAR_H} Q ${JAR_W * 0.93} ${JAR_H} ${JAR_W * 0.93} ${JAR_H - 12} L ${JAR_W * 0.93} 60 Q ${JAR_W * 0.92} 32 ${JAR_W * 0.76} 24 Z`}
-            fill="rgba(214,232,196,0.32)"
-            stroke="rgba(44,80,22,0.4)"
-            strokeWidth="2"
-          />
-        </svg>
-
+      {atTop ? (
+        /* Big terrarium jar — shown near the hero heading at the top of the page */
         <div
+          ref={jarRef}
           style={{
-            position: "absolute",
-            inset: "26px 10px 10px 10px",
+            position: "fixed",
+            top: "150px",
+            right: "8%",
+            width: BIG_JAR_W,
+            height: BIG_JAR_H,
+            pointerEvents: "auto",
+            transition: "opacity 0.4s ease",
+          }}
+        >
+          <img
+            src={terrariumJar}
+            alt="A glass jar terrarium"
+            draggable={false}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              pointerEvents: "none",
+            }}
+          />
+
+          <div
+            style={{
+              position: "absolute",
+              left: "18%",
+              right: "18%",
+              bottom: "22%",
+              display: "flex",
+              flexWrap: "wrap",
+              alignContent: "flex-end",
+              gap: "4px",
+              justifyContent: "center",
+            }}
+          >
+            {caughtIds.map((id) => {
+              const def = BUG_DEFS.find((d) => d.id === id)!;
+              return (
+                <img
+                  key={id}
+                  src={def.src}
+                  alt=""
+                  style={{ width: 26, height: 26, objectFit: "contain" }}
+                />
+              );
+            })}
+          </div>
+
+          <p
+            style={{
+              position: "absolute",
+              bottom: "-24px",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "0.68rem",
+              color: "var(--muted-foreground)",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Place bugs in the jar
+          </p>
+        </div>
+      ) : (
+        /* Small catch widget — shown once scrolled past the hero */
+        <div
+          ref={jarRef}
+          style={{
+            position: "fixed",
+            top: "76px",
+            right: "24px",
+            width: SMALL_JAR_W,
+            height: SMALL_JAR_H,
+            pointerEvents: "auto",
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+            borderRadius: "10px",
+            boxShadow: "0 4px 14px rgba(44,32,21,0.15)",
+            padding: "6px",
             display: "flex",
             flexWrap: "wrap",
-            alignContent: "flex-end",
-            gap: "3px",
+            alignContent: "flex-start",
+            gap: "2px",
             justifyContent: "center",
           }}
         >
+          {caughtIds.length === 0 && (
+            <p
+              style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "0.55rem",
+                color: "var(--muted-foreground)",
+                textAlign: "center",
+                margin: 0,
+              }}
+            >
+              drop a bug here
+            </p>
+          )}
           {caughtIds.map((id) => {
             const def = BUG_DEFS.find((d) => d.id === id)!;
             return (
@@ -235,28 +321,12 @@ export function BugJar() {
                 key={id}
                 src={def.src}
                 alt=""
-                style={{ width: 22, height: 22, objectFit: "contain" }}
+                style={{ width: 16, height: 16, objectFit: "contain" }}
               />
             );
           })}
         </div>
-
-        <p
-          style={{
-            position: "absolute",
-            bottom: "-22px",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            fontFamily: "'DM Mono', monospace",
-            fontSize: "0.65rem",
-            color: "var(--muted-foreground)",
-            letterSpacing: "0.05em",
-          }}
-        >
-          Place bugs in the jar
-        </p>
-      </div>
+      )}
     </div>
   );
 }
