@@ -6,5 +6,6 @@ Features to add-
           Language change Spanish/English
 
 
-What to do next: Add drawing for the vine and smooth out easter eggs
+What to do next: Mobile version!
+Add drawing for the vine and smooth out easter eggs
             
