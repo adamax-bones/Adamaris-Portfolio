@@ -51,16 +51,17 @@ const projects: Project[] = [
     image: "",
     imageAlt:
       "Gif of the crawly collection front page dragging",
+    video: "/videos/crawly-demo.mp4",
   },
   {
     id: 3,
     title: "Zero-Waste Vida",
     description:
       "A website that shows how to live a more sustainable life as I was thought in my hispanic household. Combining this idea with Tiny Footprint.",
-    tags: ["climate", "print", "education", "design"],
+    tags: ["climate", "education", "design"],
     status: "idea",
     icon: Sprout,
-    image: "",
+    image: "/images/zerowaste.png",
     imageAlt: "Cute doodle",
   },
   {
@@ -71,8 +72,8 @@ const projects: Project[] = [
     tags: ["illustration", "PWA", "mobile", "creative tools"],
     status: "idea",
     icon: Code2,
-    image: "",
-    imageAlt: "Sketchbok drawing",
+    image: "/images/sketchbook.png",
+    imageAlt: "Sketchbook drawing",
   },
 ];
 
@@ -142,7 +143,7 @@ export function ProjectsPage() {
             marginBottom: "2.5rem",
           }}
         >
-          A mix of things I've shipped, things I'm building, and
+          A mix of things I've done, building, and
           seeds of ideas I haven't found time for yet. All
           rooted in art, ecology, or both.
         </p>

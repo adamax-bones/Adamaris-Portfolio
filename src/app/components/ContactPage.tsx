@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Mail,
   Github,
-  Twitter,
+  Linkedin,
   Send,
   CheckCircle,
 } from "lucide-react";
@@ -125,7 +125,7 @@ export function ContactPage() {
                       ).style.color = "var(--foreground)")
                     }
                   >
-                    adamaris.rodriguez@vanderbilt.edu
+                    adamarisrodriguez465@gmail.com
                   </p>
                 </div>
               </a>
@@ -204,7 +204,7 @@ export function ContactPage() {
                     justifyContent: "center",
                   }}
                 >
-                  <Twitter
+                  <Linkedin
                     size={16}
                     style={{ color: "var(--primary)" }}
                   />
@@ -216,7 +216,7 @@ export function ContactPage() {
                       color: "var(--muted-foreground)",
                     }}
                   >
-                    Twitter / X
+                    LinkedIn
                   </p>
                   <p
                     style={{
@@ -267,8 +267,7 @@ export function ContactPage() {
                   color: "var(--primary)",
                 }}
               >
-                Open to freelance illustration & collaborative
-                projects
+                Open to collaboration and anything in between
               </span>
             </div>
           </div>

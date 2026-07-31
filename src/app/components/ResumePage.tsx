@@ -256,8 +256,8 @@ export function ResumePage() {
             fontStyle: "italic",
           }}
         >
-          PDF is the most current version — this page will stay
-          up to date as the résumé evolves.
+          PDF is the most current version. This page will stay
+          up to date as the resume evolves.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

@@ -13,7 +13,7 @@ interface NavigationProps {
 const links: { id: Page; label: string }[] = [
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-  { id: "resume", label: "Résumé" },
+  { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ];
 
