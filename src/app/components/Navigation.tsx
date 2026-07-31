@@ -1,5 +1,6 @@
-import { Leaf, Sun, Moon } from "lucide-react";
-import { motion } from "motion/react";
+import { useState } from "react";
+import { Leaf, Sun, Moon, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 type Page = "about" | "projects" | "resume" | "contact";
 
@@ -13,14 +14,21 @@ interface NavigationProps {
 const links: { id: Page; label: string }[] = [
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-  { id: "resume", label: "Resume" },
+  { id: "resume", label: "Résumé" },
   { id: "contact", label: "Contact" },
 ];
 
 export function Navigation({ currentPage, onNavigate, theme, onToggleTheme }: NavigationProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMobileNavigate = (page: Page) => {
+    onNavigate(page);
+    setMenuOpen(false);
+  };
+
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 py-4"
+      className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 py-4 md:px-8"
       style={{
         background: "var(--card)",
         backdropFilter: "blur(8px)",
@@ -53,8 +61,8 @@ export function Navigation({ currentPage, onNavigate, theme, onToggleTheme }: Na
         </span>
       </motion.button>
 
-      <div className="flex items-center gap-8">
-        <ul className="flex items-center gap-8">
+      <div className="flex items-center gap-4 md:gap-8">
+        <ul className="hidden md:flex items-center gap-8">
         {links.map((link) => (
           <li key={link.id} className="relative">
             <motion.button
@@ -114,7 +122,69 @@ export function Navigation({ currentPage, onNavigate, theme, onToggleTheme }: Na
         >
           {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
         </motion.button>
+
+        <button
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label="Toggle menu"
+          className="md:hidden flex items-center justify-center"
+          style={{
+            width: "34px",
+            height: "34px",
+            background: "none",
+            border: "none",
+            color: "var(--foreground)",
+            cursor: "pointer",
+          }}
+        >
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden"
+            style={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              background: "var(--card)",
+              borderBottom: "1px solid var(--border)",
+              overflow: "hidden",
+            }}
+          >
+            <ul className="flex flex-col px-5 py-2">
+              {links.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => handleMobileNavigate(link.id)}
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      textAlign: "left",
+                      padding: "0.85rem 0",
+                      fontFamily: "'Nunito', sans-serif",
+                      fontSize: "1rem",
+                      color: currentPage === link.id ? "var(--accent)" : "var(--foreground)",
+                      background: "none",
+                      border: "none",
+                      borderBottom: "1px solid var(--border)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
