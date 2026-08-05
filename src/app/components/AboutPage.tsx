@@ -90,6 +90,7 @@ export function AboutPage() {
             sustainability. I combine my skills to learn more
             about how technology can serve the natural world.
           </p>
+          <div id="bugjar-mobile-anchor" className="md:hidden" style={{ height: "220px" }} />
           <p
             style={{
               fontSize: "1.05rem",
@@ -99,10 +100,10 @@ export function AboutPage() {
               marginTop: "1rem",
             }}
           >
-            This portfolio is meant to be fun. Grab the
+            This portfolio is also a playground. Grab the
             drawing tool in the bottom right and leave your mark
-            I love seeing what people add. There are also six
-            little bugs wandering around the site. Try dragging
+            I love seeing what others add. There are also six
+            little bugs wandering around the site. Try dragging/tapping
             one into the jar in the corner.
           </p>
         </div>

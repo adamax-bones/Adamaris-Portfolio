@@ -1,7 +1,5 @@
-import { useRef, useState } from "react";
-import { useScroll, useSpring, useMotionValueEvent } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
-// Procedural vine path — replace svgPath with your hand-drawn SVG path data when ready
 const VINE_PATH = `
   M 28 0
   C 22 40, 38 80, 18 120
@@ -20,7 +18,6 @@ const VINE_PATH = `
   C 16 1325, 38 1355, 25 1400
 `;
 
-// Little leaf buds branching off the vine
 const BUDS = [
   { t: 0.06, side: 1 },
   { t: 0.11, side: -1 },
@@ -43,22 +40,35 @@ export function ScrollVine() {
   const pathRef = useRef<SVGPathElement>(null);
   const [progress, setProgress] = useState(0);
   const [totalLength, setTotalLength] = useState(0);
+  const rafRef = useRef<number>(0);
+  const smoothedRef = useRef(0);
 
-  const { scrollYProgress } = useScroll();
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 26,
-    mass: 0.6,
-  });
-
-  useMotionValueEvent(smoothProgress, "change", (v) => setProgress(v));
-
-  useState(() => {
+  useEffect(() => {
     requestAnimationFrame(() => {
       const path = pathRef.current;
       if (path) setTotalLength(path.getTotalLength());
     });
-  });
+  }, []);
+
+  // Poll the page's real visual position every frame instead of relying on scroll
+  // events (which weren't reliably firing) — this reads live layout directly,
+  // so it can't get stuck regardless of how scrolling is happening.
+  useEffect(() => {
+    const tick = () => {
+      const doc = document.documentElement;
+      const maxScroll = doc.scrollHeight - window.innerHeight;
+      const rawProgress =
+        maxScroll <= 0 ? 1 : Math.min(Math.max(-doc.getBoundingClientRect().top / maxScroll, 0), 1);
+
+      // simple smoothing so it still feels gentle, not robotic
+      smoothedRef.current += (rawProgress - smoothedRef.current) * 0.12;
+      setProgress(smoothedRef.current);
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
 
   const drawnLength = totalLength * progress;
 
@@ -80,7 +90,6 @@ export function ScrollVine() {
         preserveAspectRatio="xMinYMin meet"
         style={{ width: "60px", height: "100%" }}
       >
-        {/* Shadow/depth trace */}
         <path
           d={VINE_PATH}
           fill="none"
@@ -90,7 +99,6 @@ export function ScrollVine() {
           strokeDasharray={`${drawnLength} ${totalLength}`}
           strokeDashoffset={0}
         />
-        {/* Main vine */}
         <path
           ref={pathRef}
           d={VINE_PATH}
@@ -103,7 +111,6 @@ export function ScrollVine() {
           opacity={0.7}
         />
 
-        {/* Leaf buds that appear as vine grows */}
         {BUDS.map((bud, i) => {
           if (bud.t > progress) return null;
           const path = pathRef.current;
@@ -114,7 +121,6 @@ export function ScrollVine() {
 
           return (
             <g key={i} transform={`translate(${pt.x}, ${pt.y})`} opacity={leafOpacity}>
-              {/* Stem */}
               <line
                 x1={0}
                 y1={0}
@@ -125,7 +131,6 @@ export function ScrollVine() {
                 strokeLinecap="round"
                 opacity={0.65}
               />
-              {/* Leaf */}
               <ellipse
                 cx={bud.side * 14 * leafScale}
                 cy={-8 * leafScale}

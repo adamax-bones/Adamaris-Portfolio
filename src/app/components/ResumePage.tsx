@@ -88,7 +88,7 @@ const projects = [
     stack: "HTML, CSS, JavaScript",
     period: "Oct 2025 – Feb 2026",
     bullets: [
-      "Developing a sustainability-focused desktop application that allows users to track and categorize daily waste production, including recyclable, compostable, and landfill materials.",
+      "Developing a sustainability-focused web application that allows users to track and categorize daily waste production, including recyclable, compostable, and landfill materials.",
       "Strengthening front-end development skills through responsive design, user interface development, and data organization.",
     ],
   },
@@ -96,7 +96,7 @@ const projects = [
     name: "Urban Heat Island Effect in Texas",
     status: "Independent Research Project",
     stack: "Microsoft Excel",
-    period: "Feb 2025 – May 2025",
+    period: "Apr 2025 – May 2026",
     bullets: [
       "Collected and organized over 100 years of historical temperature data across Texas counties to investigate the Urban Heat Island Effect, building a structured database comparing large counties, smaller counties adjacent to urban areas, and rural counties.",
       "Analyzed long-term temperature trends and created graphs to visualize differences in warming patterns and the influence of urbanization.",
@@ -256,8 +256,8 @@ export function ResumePage() {
             fontStyle: "italic",
           }}
         >
-          PDF is the most current version. This page will stay
-          up to date as the resume evolves.
+          PDF is the most current version — this page will stay
+          up to date as the résumé evolves.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

@@ -125,7 +125,7 @@ export function ContactPage() {
                       ).style.color = "var(--foreground)")
                     }
                   >
-                    adamarisrodriguez465@gmail.com
+                    adamaris.rodriguez@vanderbilt.edu
                   </p>
                 </div>
               </a>
@@ -267,7 +267,7 @@ export function ContactPage() {
                   color: "var(--primary)",
                 }}
               >
-                Open to collaboration and anything in between
+                Open to collaboration
               </span>
             </div>
           </div>
@@ -310,8 +310,7 @@ export function ContactPage() {
                     lineHeight: 1.7,
                   }}
                 >
-                  Thank you for reaching out. I'll get back to
-                  you soon.
+                  Thank you for reaching out.
                 </p>
                 <button
                   onClick={() => {
@@ -355,19 +354,19 @@ export function ContactPage() {
                     key: "name",
                     label: "Your name",
                     type: "text",
-                    placeholder: "First Name Last Name",
+                    placeholder: "Your Name",
                   },
                   {
                     key: "email",
                     label: "Email address",
                     type: "email",
-                    placeholder: "first_and_last@example.com",
+                    placeholder: "your_name@example.com",
                   },
                   {
                     key: "subject",
                     label: "Subject",
                     type: "text",
-                    placeholder: "Hi! Let's collaborate.",
+                    placeholder: "Some Subject",
                   },
                 ].map((field) => (
                   <div key={field.key}>

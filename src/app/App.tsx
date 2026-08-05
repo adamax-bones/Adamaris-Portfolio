@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { ScrollVine } from "./components/ScrollVine";
 import { EasterEggs } from "./components/EasterEggs";
 import { BugJar } from "./components/BugJar";
+import { useBugJar } from "./hooks/useBugJar";
 
 type Page = "about" | "projects" | "resume" | "contact";
 
@@ -33,6 +34,8 @@ export default function App() {
   const handleNavigate = (page: Page) => {
     document.getElementById(page)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const bugJar = useBugJar();
 
   // Scroll-spy: highlight whichever section's tab matches what's in view
   useEffect(() => {
@@ -72,6 +75,11 @@ export default function App() {
         onNavigate={handleNavigate}
         theme={theme}
         onToggleTheme={toggleTheme}
+        caughtIds={bugJar.caughtIds}
+        jarBugs={bugJar.jarBugs}
+        showBugWidget={!bugJar.atTop && !bugJar.isMobile}
+        headerJarRef={bugJar.headerJarRef}
+        onJarTap={bugJar.onJarTap}
       />
 
       <main style={{ pointerEvents: isDrawing ? "none" : "auto", position: "relative", zIndex: 3 }}>
@@ -100,7 +108,7 @@ export default function App() {
       <EasterEggs />
 
       {/* Roaming bugs — sitewide, draggable, catch them in the jar */}
-      <BugJar />
+      <BugJar state={bugJar} />
     </div>
   );
 }
