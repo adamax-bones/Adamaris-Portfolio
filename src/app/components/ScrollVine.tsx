@@ -55,10 +55,24 @@ export function ScrollVine() {
   // so it can't get stuck regardless of how scrolling is happening.
   useEffect(() => {
     const tick = () => {
-      const doc = document.documentElement;
-      const maxScroll = doc.scrollHeight - window.innerHeight;
-      const rawProgress =
-        maxScroll <= 0 ? 1 : Math.min(Math.max(-doc.getBoundingClientRect().top / maxScroll, 0), 1);
+      // Use the max of several measurements — some pages report inconsistent
+      // scrollHeight on document.documentElement vs document.body, so we
+      // don't trust just one source.
+      const scrollHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight,
+        document.body.offsetHeight
+      );
+      const maxScroll = scrollHeight - window.innerHeight;
+
+      const scrollTop = Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      );
+
+      const rawProgress = maxScroll <= 0 ? 0 : Math.min(Math.max(scrollTop / maxScroll, 0), 1);
 
       // simple smoothing so it still feels gentle, not robotic
       smoothedRef.current += (rawProgress - smoothedRef.current) * 0.12;
